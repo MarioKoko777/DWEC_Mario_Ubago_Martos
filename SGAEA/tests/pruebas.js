@@ -50,14 +50,11 @@ console.log("LISTADO ASIGNATURAS:");
 console.log(sistema.listadoAsignaturas());
 console.log("LISTADO MATRÍCULAS:");
 console.log(sistema.listadoMatriculas());
-
-// ==============================
 // Menú interactivo por consola
-// ==============================
 function menu() {
-  let opcion;
+  let opcion = 0;
   do {
-    console.log("Opciones:");
+    console.log("Menú Principal:");
     console.log("1. Insertar Estudiante");
     console.log("2. Crear Asignatura");
     console.log("3. Matricular Estudiante");
@@ -72,127 +69,130 @@ function menu() {
     console.log("12. Desmatricular Estudiante");
     console.log("13. Buscar Estudiante o Asignatura");
     console.log("0. Salir");
+    console.log("Elige una opción:");  
     
-    opcion = prompt("Seleccione una opción:");
-    opcion = Number(opcion);
-    switch (opcion) {
-      case "1":
-        try {
-          const id = Number(prompt("ID del estudiante:"));
-          const nombre = prompt("Nombre:");
-          const edad = Number(prompt("Edad:"));
-          const calle = prompt("Calle:");
-          const numero = prompt("Número:");
-          const piso = prompt("Piso:");
-          const cp = prompt("Código postal:");
-          const provincia = prompt("Provincia:");
-          const localidad = prompt("Localidad:");
-          sistema.insertaEstudiante(id, nombre, edad, calle, numero, piso, cp, provincia, localidad);
-          console.log("Estudiante insertado correctamente.");
-        } catch (err) {
-          console.error("Error:", err.message);
-        }
-        break;
-      case "2":
-        try {
-          const id = Number(prompt("ID de la asignatura:"));
-          const nombre = prompt("Nombre:");
-          const curso = prompt("Curso:");
-          sistema.creaAsignatura(id, nombre, curso);
-          console.log("Asignatura creada correctamente.");
-        } catch (err) {
-          console.error("Error:", err.message);
-        }
-        break;
-      case "3":
-        try {
-          const idEstudiante = Number(prompt("ID del estudiante:"));
-          const idAsignatura = Number(prompt("ID de la asignatura:"));
-          sistema.matriculaEstudiante(idEstudiante, idAsignatura);
-          console.log("Estudiante matriculado correctamente.");
-        } catch (err) {
-          console.error("Error:", err.message);
-        }
-        break;
-      case "4":
-        try {
-          const idEstudiante = Number(prompt("ID del estudiante:"));
-          const idAsignatura = Number(prompt("ID de la asignatura:"));
-          const nota = Number(prompt("Nota (0-10):"));
-          sistema.califica(idEstudiante, idAsignatura, nota);
-          console.log("Calificación registrada correctamente.");
-        } catch (err) {
-          console.error("Error:", err.message);
-        }
-        break;
-      case "5":
-        try {
-          const id = Number(prompt("ID del estudiante:"));
-          const informe = sistema.informeGeneral(id);
-          console.log("Informe individual:", informe);
-        } catch (err) {
-          console.error("Error:", err.message);
-        }
-        break;
-      case "6":
-        console.log("Informe general:", sistema.informeGeneral());
-        break;
-      case "7":
-        console.log("Listado de estudiantes:", sistema.listadoEstudiantes());
-        break;
-      case "8":
-        console.log("Listado de asignaturas:", sistema.listadoAsignaturas());
-        break;
-      case "9":
-        console.log("Listado de matrículas:", sistema.listadoMatriculas());
-        break;
-      case "10":
-        try {
-          const idEstudiante = Number(prompt("ID del estudiante a eliminar:"));
-          sistema.eliminaEstudiante(idEstudiante);
-          console.log("Estudiante eliminado correctamente.");
-        } catch (err) {
-          console.error("Error:", err.message);
-        }
-        break;
-      case "11":
-        try {
-          const idAsignatura = Number(prompt("ID de la asignatura a eliminar:"));
-          sistema.asignaturas.delete(idAsignatura);
-          console.log("Asignatura eliminada correctamente.");
-        } catch (err) {
-          console.error("Error:", err.message);
-        }
-        break;
-      case "12":
-        try {
-          const idEstudiante = Number(prompt("ID del estudiante:"));
-          const idAsignatura = Number(prompt("ID de la asignatura:"));
-          sistema.desMatriculaEstudiante(idEstudiante, idAsignatura);
-          console.log("Desmatriculación realizada correctamente.");
-        } catch (err) {
-          console.error("Error:", err.message);
-        }
-        break;
-      case "13":
-        try {
-          const textoBusqueda = prompt("Ingrese el texto a buscar:");
-          const estudiantesEncontrados = sistema.buscaEstudiante(textoBusqueda);
-          const asignaturasEncontradas = sistema.buscaAsignatura(textoBusqueda);
-          console.log("Estudiantes encontrados:", estudiantesEncontrados);
-          console.log("Asignaturas encontradas:", asignaturasEncontradas);
-        } catch (err) {
-          console.error("Error:", err.message);
-        }
-        break;
-      case "0":
-        console.log("Saliendo del sistema...");
-        break;
-      default:
-        console.warn("Opción no válida. Intente de nuevo.");
-        break;
-    }
-  } while (opcion !== "0");
-}
-// Ejecutar menú
-menu();
+          opcion = prompt("Dime la opción que desees realizar");
+          opcion = String(opcion);
+            switch (opcion) {
+              case "1":
+                try {
+                  const id = Number(prompt("ID del estudiante:"));
+                  const nombre = prompt("Nombre:");
+                  const edad = Number(prompt("Edad:"));
+                  const calle = prompt("Calle:");
+                  const numero = prompt("Número:");
+                  const piso = prompt("Piso:");
+                  const cp = prompt("Código postal:");
+                  const provincia = prompt("Provincia:");
+                  const localidad = prompt("Localidad:");
+                  sistema.insertaEstudiante(id, nombre, edad, calle, numero, piso, cp, provincia, localidad);
+                  console.log("Estudiante insertado correctamente.");
+                } catch (err) {
+                  console.error("Error:", err.message);
+                }
+                break;
+              case "2":
+                try {
+                  const id = Number(prompt("ID de la asignatura:"));
+                  const nombre = prompt("Nombre:");
+                  const curso = prompt("Curso:");
+                  sistema.creaAsignatura(id, nombre, curso);
+                  console.log("Asignatura creada correctamente.");
+                } catch (err) {
+                  console.error("Error:", err.message);
+                }
+                break;
+              case "3":
+                try {
+                  const idEstudiante = Number(prompt("ID del estudiante:"));
+                  const idAsignatura = Number(prompt("ID de la asignatura:"));
+                  sistema.matriculaEstudiante(idEstudiante, idAsignatura);
+                  console.log("Estudiante matriculado correctamente.");
+                } catch (err) {
+                  console.error("Error:", err.message);
+                }
+                break;
+              case "4":
+                try {
+                  const idEstudiante = Number(prompt("ID del estudiante:"));
+                  const idAsignatura = Number(prompt("ID de la asignatura:"));
+                  const nota = Number(prompt("Nota (0-10):"));
+                  sistema.califica(idEstudiante, idAsignatura, nota);
+                  console.log("Calificación registrada correctamente.");
+                } catch (err) {
+                  console.error("Error:", err.message);
+                }
+                break;
+              case "5":
+                try {
+                  const id = Number(prompt("ID del estudiante:"));
+                  const informe = sistema.informeGeneral(id);
+                  console.log("Informe individual:", informe);
+                } catch (err) {
+                  console.error("Error:", err.message);
+                }
+                break;
+              case "6":
+                console.log("Informe general:", sistema.informeGeneral());
+                break;
+              case "7":
+                console.log("Listado de estudiantes:", sistema.listadoEstudiantes());
+                break;
+              case "8":
+                console.log("Listado de asignaturas:", sistema.listadoAsignaturas());
+                break;
+              case "9":
+                console.log("Listado de matrículas:", sistema.listadoMatriculas());
+                break;
+              case "10":
+                try {
+                  const idEstudiante = Number(prompt("ID del estudiante a eliminar:"));
+                  sistema.eliminaEstudiante(idEstudiante);
+                  console.log("Estudiante eliminado correctamente.");
+                } catch (err) {
+                  console.error("Error:", err.message);
+                }
+                break;
+              case "11":
+                try {
+                  const idAsignatura = Number(prompt("ID de la asignatura a eliminar:"));
+                  sistema.asignaturas.delete(idAsignatura);
+                  console.log("Asignatura eliminada correctamente.");
+                } catch (err) {
+                  console.error("Error:", err.message);
+                }
+                break;
+              case "12":
+                try {
+                  const idEstudiante = Number(prompt("ID del estudiante:"));
+                  const idAsignatura = Number(prompt("ID de la asignatura:"));
+                  sistema.desMatriculaEstudiante(idEstudiante, idAsignatura);
+                  console.log("Desmatriculación realizada correctamente.");
+                } catch (err) {
+                  console.error("Error:", err.message);
+                }
+                break;
+              case "13":
+                try {
+                  const textoBusqueda = prompt("Ingrese el texto a buscar:");
+                  const estudiantesEncontrados = sistema.buscaEstudiante(textoBusqueda);
+                  const asignaturasEncontradas = sistema.buscaAsignatura(textoBusqueda);
+                  console.log("Estudiantes encontrados:", estudiantesEncontrados);
+                  console.log("Asignaturas encontradas:", asignaturasEncontradas);
+                } catch (err) {
+                  console.error("Error:", err.message);
+                }
+                break;
+              case "0":
+                console.log("Saliendo del sistema...");
+                break;
+              default:
+                console.warn("Opción no válida. Intente de nuevo.");
+                break;
+            }
+          } while (opcion !== "0");
+  }
+
+  // Ejecutar menú
+
+  menu();
