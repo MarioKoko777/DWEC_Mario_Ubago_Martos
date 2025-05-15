@@ -68,13 +68,13 @@ function menu() {
     console.log("6. Ver informe general");
     console.log("7. Ver listado de estudiantes");
     console.log("8. Ver listado de asignaturas");
-    console.log("9. Ver listado de matrículas");
+    console.log("9. Ver listado de  ");
     console.log("10. Eliminar Estudiante");
     console.log("11. Eliminar Asignatura");
     console.log("12. Desmatricular Estudiante");
     console.log("13. Buscar Estudiante o Asignatura");
     console.log("14. Promedio de Asignaturas por Estudiante");
-    console.log("15. Promedio de Estudiantes por Asignatura");
+    console.log("15. Promedio de Estudiante por Asignatura");
     console.log("0. Salir");
     console.log("Elige una opción:");  
     
