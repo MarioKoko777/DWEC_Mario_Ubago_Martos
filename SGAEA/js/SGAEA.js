@@ -36,7 +36,7 @@ export class SGAEA {
     const estudiantesEncontrados = [...this.estudiantes.values()]
       .filter(e => e.nombre.toLowerCase().includes(texto.toLowerCase()));
     if (estudiantesEncontrados.length === 0) {
-      return `No se encontraron estudiantes que coincidan con "${texto}".`;
+      throw new Error (`No se encontraron estudiantes que coincidan con "${texto}".`);
     }else{
     let textoResultado = `🔍 Estudiantes encontrados que coinciden con "${texto}":\n`;
     estudiantesEncontrados.forEach(est => {
@@ -53,7 +53,7 @@ export class SGAEA {
     const asignaturasEncontradas = [...this.asignaturas.values()]
       .filter(a => a.nombre.toLowerCase().includes(nombre.toLowerCase()));
     if (asignaturasEncontradas.length === 0) {
-      return `No se encontraron asignaturas que coincidan con "${nombre}".`;
+      throw new Error (`No se encontraron asignaturas que coincidan con "${nombre}".`);
     }else{
     let texto = `🔍 Asignaturas encontradas que coinciden con "${nombre}":\n`;
     asignaturasEncontradas.forEach(asig => {
@@ -131,7 +131,11 @@ export class SGAEA {
     if (!est) {
       throw new Error("Estudiante no encontrado");
     }else{
-      return est.obtenerPromedioPorAsignatura(idAsignatura);
+        if (!this.asignaturas.has(idAsignatura)) {
+          throw new Error("Asignatura no encontrada");
+        }else{
+          return est.obtenerPromedioPorAsignatura(idAsignatura);
+        }
     } 
   }
   informeGeneral(idEstudiante = null) {
