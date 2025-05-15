@@ -3,9 +3,9 @@ import { SGAEA } from '../js/SGAEA.js';
 const sistema = new SGAEA();
 
 // Crear estudiantes
-sistema.insertaEstudiante(1, "Juan Pérez", 20, "Calle A", 10, "1B", "08001", "Barcelona", "Barcelona");
-sistema.insertaEstudiante(2, "María López", 21, "Calle B", 20, "2A", "08002", "Barcelona", "Barcelona");
-sistema.insertaEstudiante(3, "Carlos Ruiz", 22, "Calle C", 30, "3C", "08003", "Barcelona", "Barcelona");
+sistema.insertaEstudiante(1, "Juan Pérez", 20, "Calle A", 10, 1, 8001, "Barcelona", "Barcelona");
+sistema.insertaEstudiante(2, "María López", 21, "Calle B", 20, 2, 8002, "Barcelona", "Barcelona");
+sistema.insertaEstudiante(3, "Carlos Ruiz", 22, "Calle C", 30, 3, 8003, "Barcelona", "Barcelona");
 
 // Crear asignaturas
 sistema.creaAsignatura(101, "Matemáticas", "1º ESO");
@@ -13,11 +13,16 @@ sistema.creaAsignatura(102, "Lengua", "1º ESO");
 sistema.creaAsignatura(103, "Historia", "1º ESO");
 
 // Matricular estudiantes
-[1, 2, 3].forEach(idEst => {
-  [101, 102, 103].forEach(idAsig => {
-    sistema.matriculaEstudiante(idEst, idAsig);
+const matriculas = {
+  1: [101, 102, 103],
+  2: [101, 102, 103],
+  3: [101, 102, 103]
+};
+for (let idEst in matriculas) {
+  matriculas[idEst].forEach(idAsig => {
+    sistema.matriculaEstudiante(Number(idEst), Number(idAsig));
   });
-});
+}
 
 // Calificaciones
 const notas = {
@@ -63,11 +68,13 @@ function menu() {
     console.log("6. Ver informe general");
     console.log("7. Ver listado de estudiantes");
     console.log("8. Ver listado de asignaturas");
-    console.log("9. Ver listado de matrículas");
+    console.log("9. Ver listado de  ");
     console.log("10. Eliminar Estudiante");
     console.log("11. Eliminar Asignatura");
     console.log("12. Desmatricular Estudiante");
     console.log("13. Buscar Estudiante o Asignatura");
+    console.log("14. Promedio de Asignaturas por Estudiante");
+    console.log("15. Promedio de Estudiante por Asignatura");
     console.log("0. Salir");
     console.log("Elige una opción:");  
     
@@ -80,9 +87,9 @@ function menu() {
                   const nombre = prompt("Nombre:");
                   const edad = Number(prompt("Edad:"));
                   const calle = prompt("Calle:");
-                  const numero = prompt("Número:");
-                  const piso = prompt("Piso:");
-                  const cp = prompt("Código postal:");
+                  const numero = Number(prompt("Número:"));
+                  const piso = Number(prompt("Piso:"));
+                  const cp = Number(prompt("Código postal:"));
                   const provincia = prompt("Provincia:");
                   const localidad = prompt("Localidad:");
                   sistema.insertaEstudiante(id, nombre, edad, calle, numero, piso, cp, provincia, localidad);
@@ -133,16 +140,16 @@ function menu() {
                 }
                 break;
               case "6":
-                console.log("Informe general:", sistema.informeGeneral());
+                console.log("Informe general:\n", sistema.informeGeneral());
                 break;
               case "7":
-                console.log("Listado de estudiantes:", sistema.listadoEstudiantes());
+                console.log("Listado de estudiantes:\n", sistema.listadoEstudiantes());
                 break;
               case "8":
-                console.log("Listado de asignaturas:", sistema.listadoAsignaturas());
+                console.log("Listado de asignaturas:\n", sistema.listadoAsignaturas());
                 break;
               case "9":
-                console.log("Listado de matrículas:", sistema.listadoMatriculas());
+                console.log("Listado de matrículas:\n", sistema.listadoMatriculas());
                 break;
               case "10":
                 try {
@@ -156,7 +163,7 @@ function menu() {
               case "11":
                 try {
                   const idAsignatura = Number(prompt("ID de la asignatura a eliminar:"));
-                  sistema.asignaturas.delete(idAsignatura);
+                  sistema.eliminaAsignatura(idAsignatura);
                   console.log("Asignatura eliminada correctamente.");
                 } catch (err) {
                   console.error("Error:", err.message);
@@ -183,6 +190,28 @@ function menu() {
                   console.error("Error:", err.message);
                 }
                 break;
+                case "14":
+                try {
+                  const idEstudiante = Number(prompt("ID del estudiante:"));
+                  let est = sistema.estudiantes.get(idEstudiante);
+                  const promedio = sistema.promedioAsignaturasEstudiante(idEstudiante);
+                  console.log(`Promedio general del estudiante ${est.nombre}: ${promedio}`);
+                } catch (err) {
+                  console.error("Error:", err.message);
+                }
+                break;
+                case "15":
+                try {
+                  const idEstudiante = Number(prompt("ID del estudiante:"));
+                  const idAsignatura = Number(prompt("ID de la asignatura:"));
+                  const asig = sistema.asignaturas.get(idAsignatura);
+                  const est = sistema.estudiantes.get(idEstudiante);
+                  const promedio = sistema.promedioAsignaturaEstudiante(idEstudiante, idAsignatura)
+                  console.log(`Promedio del estudiante ${est. nombre} en la asignatura ${asig.nombre}: ${promedio}`);
+                } catch (err) {
+                  console.error("Error:", err.message);
+                }
+                break;
               case "0":
                 console.log("Saliendo del sistema...");
                 break;
@@ -193,6 +222,5 @@ function menu() {
           } while (opcion !== "0");
   }
 
-  // Ejecutar menú
-
-  menu();
+// Ejecutar menú
+menu();
