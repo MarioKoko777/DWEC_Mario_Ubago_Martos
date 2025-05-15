@@ -194,12 +194,8 @@ function menu() {
                 try {
                   const idEstudiante = Number(prompt("ID del estudiante:"));
                   let est = sistema.estudiantes.get(idEstudiante);
-                  if (est) {
-                    const promedio = est.obtenerPromedioGeneral();
-                    console.log(`Promedio general del estudiante ${est.nombre}: ${promedio}`);
-                  } else {
-                    throw new Error("Estudiante no encontrado");
-                  }
+                  const promedio = sistema.promedioAsignaturasEstudiante(idEstudiante);
+                  console.log(`Promedio general del estudiante ${est.nombre}: ${promedio}`);
                 } catch (err) {
                   console.error("Error:", err.message);
                 }
@@ -210,17 +206,8 @@ function menu() {
                   const idAsignatura = Number(prompt("ID de la asignatura:"));
                   const asig = sistema.asignaturas.get(idAsignatura);
                   const est = sistema.estudiantes.get(idEstudiante);
-                  if(est){
-                    if (asig) {
-                    const promedio = est.obtenerPromedioPorAsignatura(idAsignatura);
-                    console.log(`Promedio de estudiantes en la asignatura ${asig.nombre}: ${promedio}`);
-                    } else {
-                      throw new Error("Asignatura no encontrada");
-                    }
-                  }else{
-                    throw new Error("Estudiante no encontrado");
-                  }
-                  
+                  const promedio = sistema.promedioAsignaturaEstudiante(idEstudiante, idAsignatura)
+                  console.log(`Promedio del estudiante ${est. nombre} en la asignatura ${asig.nombre}: ${promedio}`);
                 } catch (err) {
                   console.error("Error:", err.message);
                 }
@@ -236,4 +223,4 @@ function menu() {
   }
 
   // Ejecutar menú
-  menu();
+menu();
