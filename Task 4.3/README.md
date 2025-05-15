@@ -18,9 +18,6 @@ Este proyecto implementa un sistema académico sencillo en JavaScript, siguiendo
 - Matricular y desmatricular estudiantes.
 - Registrar calificaciones.
 - Generar informes individuales y generales.
-- Generar listados de estudiantes, asignaturas y matrículas.
-- Generar promedio de Asignaturas por Estudiante.
-- Generar promedio de Estudiantes por Asignatura.
 - Buscar estudiantes y asignaturas por nombre.
 - Menú interactivo mediante consola (`prompt` y `console.log`).
 
