@@ -222,5 +222,5 @@ function menu() {
           } while (opcion !== "0");
   }
 
-  // Ejecutar menú
+// Ejecutar menú
 menu();
