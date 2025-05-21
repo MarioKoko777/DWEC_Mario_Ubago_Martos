@@ -8,6 +8,7 @@ Este proyecto implementa un sistema académico sencillo en JavaScript, siguiendo
 - `index.html`: Página base que carga el script de pruebas.
 - `js/Estudiante.js`: Define la clase `Estudiante`, con métodos para manejar calificaciones y promedios.
 - `js/Asignatura.js`: Define la clase `Asignatura` con identificador, nombre y curso.
+- `js/AsignaturaOpcional.js`: Define la clase `AsignaturaOpcional` la cual es una subclase de la clase `Asignatura`.
 - `js/SGAEA.js`: Módulo principal que gestiona estudiantes, asignaturas, matrículas y calificaciones.
 - `tests/pruebas.js`: Script que prueba todas las funcionalidades del sistema mediante consola y un menú interactivo.
 
