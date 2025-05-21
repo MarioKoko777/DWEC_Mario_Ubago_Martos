@@ -30,7 +30,8 @@
     
         <h2><span class="attribs"><span class="type-signature"></span></span>Estudiante<span class="signature">(id, nombre, edad, direccion)</span><span class="type-signature"></span></h2>
         
-            <div class="class-description">Representa a un estudiante con su información personal, matrículas y calificaciones.</div>
+            <div class="class-description">Clase que representa a un estudiante con sus datos personales, matriculaciones y calificaciones.
+Utiliza propiedades privadas para encapsular los datos y Map para gestionar relaciones.</div>
         
     
 </header>
@@ -53,7 +54,7 @@
 
 
 <div class="description">
-    Crea una instancia de la clase Estudiante.
+    Crea una instancia de Estudiante.
 </div>
 
 
@@ -105,7 +106,7 @@
 
             
 
-            <td class="description last">El ID único del estudiante.</td>
+            <td class="description last">Identificador único del estudiante.</td>
         </tr>
 
     
@@ -128,7 +129,7 @@
 
             
 
-            <td class="description last">El nombre del estudiante.</td>
+            <td class="description last">Nombre completo del estudiante.</td>
         </tr>
 
     
@@ -142,6 +143,9 @@
             
                 
 <span class="param-type">number</span>
+|
+
+<span class="param-type">string</span>
 
 
             
@@ -151,7 +155,7 @@
 
             
 
-            <td class="description last">La edad del estudiante.</td>
+            <td class="description last">Edad del estudiante (puede ser número o cadena numérica).</td>
         </tr>
 
     
@@ -164,48 +168,6 @@
             <td class="type">
             
                 
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">La dirección del estudiante.
-                <h6>Properties</h6>
-                
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>calle</code></td>
-            
-
-            <td class="type">
-            
-                
 <span class="param-type">string</span>
 
 
@@ -216,129 +178,7 @@
 
             
 
-            <td class="description last">La calle de la dirección.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>numero</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">El número de la dirección.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>piso</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">El piso de la dirección.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>cp</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">El código postal de la dirección.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>provincia</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">La provincia de la dirección.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>localidad</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">La localidad de la dirección.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-            </td>
+            <td class="description last">Dirección del estudiante.</td>
         </tr>
 
     
@@ -379,7 +219,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Estudiante.js.html">Estudiante.js</a>, <a href="Estudiante.js.html#line4">line 4</a>
+        <a href="Estudiante.js.html">Estudiante.js</a>, <a href="Estudiante.js.html#line5">line 5</a>
     </li></ul></dd>
     
 
@@ -436,22 +276,12 @@
 
         
             
-<h4 class="name" id="calificaciones"><span class="type-signature"></span>calificaciones<span class="type-signature"> :Map.&lt;string, Array.&lt;number>></span></h4>
+<h4 class="name" id="calificaciones"><span class="type-signature"></span>calificaciones<span class="type-signature"></span></h4>
 
 
 
 
 
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">Map.&lt;string, Array.&lt;number>></span>
-
-
-        </li>
-    </ul>
 
 
 
@@ -486,7 +316,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Estudiante.js.html">Estudiante.js</a>, <a href="Estudiante.js.html#line30">line 30</a>
+        <a href="Estudiante.js.html">Estudiante.js</a>, <a href="Estudiante.js.html#line59">line 59</a>
     </li></ul></dd>
     
 
@@ -504,22 +334,12 @@
 
         
             
-<h4 class="name" id="direccion"><span class="type-signature"></span>direccion<span class="type-signature"> :Object</span></h4>
+<h4 class="name" id="direccion"><span class="type-signature"></span>direccion<span class="type-signature"></span></h4>
 
 
 
 
 
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">Object</span>
-
-
-        </li>
-    </ul>
 
 
 
@@ -554,7 +374,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Estudiante.js.html">Estudiante.js</a>, <a href="Estudiante.js.html#line26">line 26</a>
+        <a href="Estudiante.js.html">Estudiante.js</a>, <a href="Estudiante.js.html#line49">line 49</a>
     </li></ul></dd>
     
 
@@ -572,22 +392,12 @@
 
         
             
-<h4 class="name" id="edad"><span class="type-signature"></span>edad<span class="type-signature"> :number</span></h4>
+<h4 class="name" id="edad"><span class="type-signature"></span>edad<span class="type-signature"></span></h4>
 
 
 
 
 
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">number</span>
-
-
-        </li>
-    </ul>
 
 
 
@@ -622,7 +432,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Estudiante.js.html">Estudiante.js</a>, <a href="Estudiante.js.html#line24">line 24</a>
+        <a href="Estudiante.js.html">Estudiante.js</a>, <a href="Estudiante.js.html#line44">line 44</a>
     </li></ul></dd>
     
 
@@ -640,22 +450,16 @@
 
         
             
-<h4 class="name" id="id"><span class="type-signature"></span>id<span class="type-signature"> :string</span></h4>
+<h4 class="name" id="edad"><span class="type-signature"></span>edad<span class="type-signature"></span></h4>
 
 
 
 
+<div class="description">
+    Establece una nueva edad para el estudiante.
+</div>
 
 
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">string</span>
-
-
-        </li>
-    </ul>
 
 
 
@@ -690,7 +494,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Estudiante.js.html">Estudiante.js</a>, <a href="Estudiante.js.html#line20">line 20</a>
+        <a href="Estudiante.js.html">Estudiante.js</a>, <a href="Estudiante.js.html#line79">line 79</a>
     </li></ul></dd>
     
 
@@ -708,22 +512,12 @@
 
         
             
-<h4 class="name" id="matriculas"><span class="type-signature"></span>matriculas<span class="type-signature"> :Map.&lt;string, string></span></h4>
+<h4 class="name" id="id"><span class="type-signature"></span>id<span class="type-signature"></span></h4>
 
 
 
 
 
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">Map.&lt;string, string></span>
-
-
-        </li>
-    </ul>
 
 
 
@@ -758,7 +552,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Estudiante.js.html">Estudiante.js</a>, <a href="Estudiante.js.html#line28">line 28</a>
+        <a href="Estudiante.js.html">Estudiante.js</a>, <a href="Estudiante.js.html#line34">line 34</a>
     </li></ul></dd>
     
 
@@ -776,22 +570,12 @@
 
         
             
-<h4 class="name" id="nombre"><span class="type-signature"></span>nombre<span class="type-signature"> :string</span></h4>
+<h4 class="name" id="matriculas"><span class="type-signature"></span>matriculas<span class="type-signature"></span></h4>
 
 
 
 
 
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">string</span>
-
-
-        </li>
-    </ul>
 
 
 
@@ -826,7 +610,127 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Estudiante.js.html">Estudiante.js</a>, <a href="Estudiante.js.html#line22">line 22</a>
+        <a href="Estudiante.js.html">Estudiante.js</a>, <a href="Estudiante.js.html#line54">line 54</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="nombre"><span class="type-signature"></span>nombre<span class="type-signature"></span></h4>
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Estudiante.js.html">Estudiante.js</a>, <a href="Estudiante.js.html#line39">line 39</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="nombre"><span class="type-signature"></span>nombre<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    Establece un nuevo nombre para el estudiante.
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Estudiante.js.html">Estudiante.js</a>, <a href="Estudiante.js.html#line67">line 67</a>
     </li></ul></dd>
     
 
@@ -862,7 +766,7 @@
 
 
 <div class="description">
-    Agrega una calificación a una asignatura del estudiante.
+    Añade una nueva calificación para una asignatura.
 </div>
 
 
@@ -914,7 +818,7 @@
 
             
 
-            <td class="description last">El ID de la asignatura.</td>
+            <td class="description last">Identificador de la asignatura.</td>
         </tr>
 
     
@@ -937,7 +841,7 @@
 
             
 
-            <td class="description last">La calificación obtenida en la asignatura.</td>
+            <td class="description last">Calificación obtenida (0-10 o equivalente).</td>
         </tr>
 
     
@@ -978,7 +882,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Estudiante.js.html">Estudiante.js</a>, <a href="Estudiante.js.html#line37">line 37</a>
+        <a href="Estudiante.js.html">Estudiante.js</a>, <a href="Estudiante.js.html#line91">line 91</a>
     </li></ul></dd>
     
 
@@ -1022,7 +926,7 @@
 
 
 <div class="description">
-    Obtiene el promedio general de todas las calificaciones del estudiante.
+    Calcula el promedio general de todas las calificaciones del estudiante.
 </div>
 
 
@@ -1066,7 +970,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Estudiante.js.html">Estudiante.js</a>, <a href="Estudiante.js.html#line47">line 47</a>
+        <a href="Estudiante.js.html">Estudiante.js</a>, <a href="Estudiante.js.html#line102">line 102</a>
     </li></ul></dd>
     
 
@@ -1095,7 +999,7 @@
 
         
 <div class="param-desc">
-    El promedio general de las calificaciones del estudiante, redondeado a dos decimales.
+    Promedio general formateado con 2 decimales (0 si no hay calificaciones).
 </div>
 
 
@@ -1132,7 +1036,7 @@
 
 
 <div class="description">
-    Obtiene el promedio de las calificaciones de una asignatura específica.
+    Calcula el promedio de calificaciones para una asignatura específica.
 </div>
 
 
@@ -1184,7 +1088,7 @@
 
             
 
-            <td class="description last">El ID de la asignatura.</td>
+            <td class="description last">Identificador de la asignatura.</td>
         </tr>
 
     
@@ -1225,7 +1129,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Estudiante.js.html">Estudiante.js</a>, <a href="Estudiante.js.html#line60">line 60</a>
+        <a href="Estudiante.js.html">Estudiante.js</a>, <a href="Estudiante.js.html#line116">line 116</a>
     </li></ul></dd>
     
 
@@ -1254,7 +1158,117 @@
 
         
 <div class="param-desc">
-    El promedio de las calificaciones en la asignatura, redondeado a dos decimales.
+    Promedio de la asignatura formateado con 2 decimales (0 si no hay calificaciones).
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="toString"><span class="type-signature"></span>toString<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Devuelve una representación en cadena del estudiante.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Estudiante.js.html">Estudiante.js</a>, <a href="Estudiante.js.html#line126">line 126</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    Cadena con formato "Nombre (Edad años) - Dirección".
 </div>
 
 
@@ -1293,13 +1307,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Asignatura.html">Asignatura</a></li><li><a href="Estudiante.html">Estudiante</a></li><li><a href="SGAEA.html">SGAEA</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Asignatura.html">Asignatura</a></li><li><a href="AsignaturaOptativa.html">AsignaturaOptativa</a></li><li><a href="Estudiante.html">Estudiante</a></li><li><a href="SGAEA.html">SGAEA</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Thu May 15 2025 17:07:39 GMT+0200 (hora de verano de Europa central)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Wed May 21 2025 14:25:29 GMT+0200 (hora de verano de Europa central)
 </footer>
 
 <script> prettyPrint(); </script>
