@@ -1,0 +1,57 @@
+{
+  "name": "task-4.3",
+  "version": "1.0.0",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "doc": "if exist docs rmdir /s /q docs && npx jsdoc -c jsdoc.json",
+    "start": "webpack serve --mode development --open",
+    "build": "webpack --mode production"
+  },
+  "keywords": [],
+  "author": "Mario Ubago Martos",
+  "license": "ISC",
+  "description": "Proyecto de gestion de estudiantes",
+  "devDependencies": {
+    "@babel/core": "^7.27.1",
+    "@babel/preset-env": "^7.27.2",
+    "babel-loader": "^10.0.0",
+    "clean-webpack-plugin": "^4.0.0",
+    "core-js": "^3.42.0",
+    "css-loader": "^7.1.2",
+    "html-webpack-plugin": "^5.6.3",
+    "jsdoc": "^4.0.4",
+    "mini-css-extract-plugin": "^2.9.2",
+    "regenerator-runtime": "^0.14.1",
+    "style-loader": "^4.0.0",
+    "webpack": "^5.99.8",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.1"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "argparse": "^2.0.1",
+    "bluebird": "^3.7.2",
+    "catharsis": "^0.9.0",
+    "entities": "^4.5.0",
+    "escape-string-regexp": "^2.0.0",
+    "graceful-fs": "^4.2.11",
+    "js2xmlparser": "^4.0.2",
+    "klaw": "^3.0.0",
+    "linkify-it": "^5.0.0",
+    "lodash": "^4.17.21",
+    "markdown-it": "^14.1.0",
+    "markdown-it-anchor": "^8.6.7",
+    "marked": "^4.3.0",
+    "mdurl": "^2.0.0",
+    "mkdirp": "^1.0.4",
+    "punycode.js": "^2.3.1",
+    "requizzle": "^0.2.4",
+    "strip-json-comments": "^3.1.1",
+    "uc.micro": "^2.1.0",
+    "underscore": "^1.13.7",
+    "xmlcreate": "^2.0.4"
+  }
+}
