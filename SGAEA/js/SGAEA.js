@@ -1,143 +1,260 @@
 import { Estudiante } from './Estudiante.js';
-import { Asignatura } from './Asignatura.js';
+import { Asignatura, AsignaturaOptativa } from './Asignatura.js';
+
+/**
+ * Clase principal del sistema de gestión académica
+ * @class SGAEA
+ */
 export class SGAEA {
+  // ENCAPSULACIÓN: Propiedades privadas
+  #estudiantes;
+  #asignaturas;
+
   constructor() {
-    this.estudiantes = new Map();
-    this.asignaturas = new Map();
+    this.#estudiantes = new Map();
+    this.#asignaturas = new Map();
   }
+  // ENCAPSULACIÓN: Getter para estudiantes (solo lectura)
+  get estudiantes() {
+    return new Map(this.#estudiantes);
+  }
+  // ENCAPSULACIÓN: Getter para asignaturas (solo lectura)
+  get asignaturas() {
+    return new Map(this.#asignaturas);
+  }
+
+  /**
+   * Inserta un nuevo estudiante en el sistema
+   * @param {number} id - ID único del estudiante
+   * @param {string} nombre - Nombre del estudiante
+   * @param {number} edad - Edad del estudiante
+   * @param {string} calle - Calle de la dirección
+   * @param {string|number} numero - Número de la dirección
+   * @param {string|number|null} piso - Piso (opcional)
+   * @param {string} cp - Código postal
+   * @param {string} provincia - Provincia
+   * @param {string} localidad - Localidad
+   * @throws {Error} Si el ID ya existe o los datos son inválidos
+   */
   insertaEstudiante(id, nombre, edad, calle, numero, piso, cp, provincia, localidad) {
-    if (this.estudiantes.has(id)) {
-      throw new Error("ID duplicado");
+    // ENCAPSULACIÓN: Validación dentro del método
+    if (this.#estudiantes.has(id)) {
+      throw new Error(`El estudiante con ID ${id} ya existe`);
     }
     const direccion = { calle, numero, piso, cp, provincia, localidad };
-    this.estudiantes.set(id, new Estudiante(id, nombre, edad, direccion));
+    this.#estudiantes.set(id, new Estudiante(id, nombre, edad, direccion));
   }
+
+  /**
+   * Elimina un estudiante del sistema
+   * @param {number} idEstudiante - ID del estudiante a eliminar
+   * @throws {Error} Si el estudiante no existe
+   */
   eliminaEstudiante(idEstudiante) {
-    let est = this.estudiantes.get(idEstudiante)
-    if (!est){
-      throw new Error("ID no encontrado");
-    }else{
-      this.estudiantes.delete(idEstudiante);
+    if (!this.#estudiantes.has(idEstudiante)) {
+      throw new Error(`Estudiante con ID ${idEstudiante} no encontrado`);
     }
+    this.#estudiantes.delete(idEstudiante);
   }
-  eliminaAsignatura(idAsignatura) {
-    const asig = this.asignaturas.get(idAsignatura);
-    if (!asig) {
-      throw new Error("Asignatura no encontrada");
+
+  /**
+   * HERENCIA Y POLIMORFISMO: Crea una asignatura normal u optativa
+   * @param {number} id - ID de la asignatura
+   * @param {string} nombre - Nombre de la asignatura
+   * @param {string} curso - Curso al que pertenece
+   * @param {number|null} [creditos=null] - Créditos (para optativas)
+   * @throws {Error} Si el ID ya existe
+   */
+  creaAsignatura(id, nombre, curso, creditos) {
+    if (this.#asignaturas.has(id)) {
+      throw new Error(`La asignatura con ID ${id} ya existe`);
+    }else{
+      // HERENCIA: Creación de diferente tipo según parámetros
+      let asignatura;
+      if(creditos == null) {
+        asignatura = new Asignatura(id, nombre, curso);
+      }else{
+         asignatura = new AsignaturaOptativa(id, nombre, curso, creditos)
+      }
+      this.#asignaturas.set(id, asignatura);  
     }
-    for (let estudiante of this.estudiantes.values()) {
+    
+  }
+
+  /**
+   * Elimina una asignatura del sistema
+   * @param {number} idAsignatura - ID de la asignatura a eliminar
+   * @throws {Error} Si la asignatura no existe
+   */
+  eliminaAsignatura(idAsignatura) {
+    if (!this.#asignaturas.has(idAsignatura)) {
+      throw new Error(`Asignatura con ID ${idAsignatura} no encontrada`);
+    }
+    // Desmatricular a todos los estudiantes primero
+    for (const estudiante of this.#estudiantes.values()) {
       if (estudiante.matriculas.has(idAsignatura)) {
         this.desMatriculaEstudiante(estudiante.id, idAsignatura);
       }
     }
-    this.asignaturas.delete(idAsignatura);
+    this.#asignaturas.delete(idAsignatura);
   }
+
+  /**
+   * SOBRECARGA: Busca estudiantes y/o asignaturas
+   * Versión 1: Búsqueda general
+   * @param {string} texto - Texto a buscar
+   * @returns {Object} Objeto con estudiantes y asignaturas encontradas
+   */
+  busca(texto) {
+    return {
+      estudiantes: this.#buscaEstudiantes(texto),
+      asignaturas: this.#buscaAsignaturas(texto)
+    };
+  }
+
+  /**
+   * SOBRECARGA: Busca estudiantes
+   * Versión 2: Búsqueda específica de estudiantes
+   * @param {string} texto - Texto a buscar en nombres
+   * @returns {Array} Estudiantes encontrados
+   */
   buscaEstudiante(texto) {
-    const estudiantesEncontrados = [...this.estudiantes.values()]
-      .filter(e => e.nombre.toLowerCase().includes(texto.toLowerCase()));
-    if (estudiantesEncontrados.length === 0) {
-      throw new Error (`No se encontraron estudiantes que coincidan con "${texto}".`);
-    }else{
-    let textoResultado = `🔍 Estudiantes encontrados que coinciden con "${texto}":\n`;
-    estudiantesEncontrados.forEach(est => {
-      textoResultado += `  - ${est.nombre} (ID: ${est.id}), Edad: ${est.edad}, Dirección: ${est.direccion.calle}, ${est.direccion.numero}\n`;
-    });
-    return textoResultado;
-    }
+    return this.#buscaEstudiantes(texto);
   }
-  creaAsignatura(id, nombre, curso) {
-    if (this.asignaturas.has(id)) throw new Error("ID duplicado");
-    this.asignaturas.set(id, new Asignatura(id, nombre, curso));
+
+  /**
+   * ENCAPSULACIÓN: Método privado para buscar estudiantes
+   * @private
+   */
+  #buscaEstudiantes(texto) {
+    return [...this.#estudiantes.values()].filter(e => 
+      e.nombre.toLowerCase().includes(texto.toLowerCase())
+    );
   }
+
+  /**
+   * SOBRECARGA: Busca asignaturas
+   * Versión 2: Búsqueda específica de asignaturas
+   * @param {string} nombre - Texto a buscar en nombres
+   * @returns {Array} Asignaturas encontradas
+   */
   buscaAsignatura(nombre) {
-    const asignaturasEncontradas = [...this.asignaturas.values()]
-      .filter(a => a.nombre.toLowerCase().includes(nombre.toLowerCase()));
-    if (asignaturasEncontradas.length === 0) {
-      throw new Error (`No se encontraron asignaturas que coincidan con "${nombre}".`);
-    }else{
-    let texto = `🔍 Asignaturas encontradas que coinciden con "${nombre}":\n`;
-    asignaturasEncontradas.forEach(asig => {
-      texto += `  - ${asig.nombre} (ID: ${asig.id}), Curso: ${asig.curso}\n`;
-    });
-    return texto;
-    }
+    return this.#buscaAsignaturas(nombre);
   }
+
+  /**
+   * ENCAPSULACIÓN: Método privado para buscar asignaturas
+   * @private
+   */
+  #buscaAsignaturas(texto) {
+    return [...this.#asignaturas.values()].filter(a => 
+      a.nombre.toLowerCase().includes(texto.toLowerCase())
+    );
+  }
+
+  /**
+   * Matricula un estudiante en una asignatura
+   * @param {number} idEstudiante - ID del estudiante
+   * @param {number} idAsignatura - ID de la asignatura
+   * @throws {Error} Si estudiante/asignatura no existen o ya está matriculado
+   */
   matriculaEstudiante(idEstudiante, idAsignatura) {
-    let est = this.estudiantes.get(idEstudiante);
-    if (est){
-      if(this.asignaturas.has(idAsignatura)){
-        if (est.matriculas.has(idAsignatura)){
-          throw new Error("Ya está matriculado en esta asignatura");
-        } else{
-          est.matriculas.set(idAsignatura, new Date().toLocaleDateString("es-ES"));
-        }           
-      } else{
-        throw new Error("Asignatura no encontrada");
-      }
-    }else {
-      throw new Error("Estudiante no encontrado");
+    const estudiante = this.#estudiantes.get(idEstudiante);
+    if (!estudiante) {
+      throw new Error(`Estudiante con ID ${idEstudiante} no encontrado`);
     }
+    if (!this.#asignaturas.has(idAsignatura)) {
+      throw new Error(`Asignatura con ID ${idAsignatura} no encontrada`);
+    }
+    if (estudiante.matriculas.has(idAsignatura)) {
+      throw new Error(`El estudiante ya está matriculado en esta asignatura`);
+    }
+    estudiante.matriculas.set(idAsignatura, new Date().toLocaleDateString('es-ES'));
   }
+
+  /**
+   * Desmatricula un estudiante de una asignatura
+   * @param {number} idEstudiante - ID del estudiante
+   * @param {number} idAsignatura - ID de la asignatura
+   * @throws {Error} Si no existe la matrícula o el estudiante
+   */
   desMatriculaEstudiante(idEstudiante, idAsignatura) {
-    let est = this.estudiantes.get(idEstudiante);
-    if (est){
-      if (!est.matriculas.has(idAsignatura)){
-        throw new Error("No está matriculado en esta asignatura");
-      }else {
-        est.matriculas.delete(idAsignatura);
-      }
-      if (!est.calificaciones.has(idAsignatura)){
-        throw new Error("No tiene calificaciones en esta asignatura");
-      }else {
-        est.calificaciones.delete(idAsignatura);
-      }
-    } else {
-      throw new Error("Estudiante no encontrado");
+    const estudiante = this.#estudiantes.get(idEstudiante);
+    if (!estudiante) {
+      throw new Error(`Estudiante con ID ${idEstudiante} no encontrado`);
     }
+    if (!estudiante.matriculas.has(idAsignatura)) {
+      throw new Error(`El estudiante no está matriculado en esta asignatura`);
+    }
+    estudiante.matriculas.delete(idAsignatura);
+    estudiante.calificaciones.delete(idAsignatura);
   }
+
+  /**
+   * Asigna una calificación a un estudiante en una asignatura
+   * @param {number} idEstudiante - ID del estudiante
+   * @param {number} idAsignatura - ID de la asignatura
+   * @param {number} nota - Calificación (0-10)
+   * @throws {Error} Si los datos son inválidos
+   */
   califica(idEstudiante, idAsignatura, nota) {
-    let est = this.estudiantes.get(idEstudiante);
-    if (nota < 0 || nota > 10){
-      throw new Error("Nota inválida");
-    }else{
-      if (est){
-        if (this.asignaturas.has(idAsignatura)){
-          if (est.matriculas.has(idAsignatura)){
-            est.agregarCalificacion(idAsignatura, nota)
-          } else{
-            throw new Error("No está matriculado en esta asignatura");
-          } 
-        }else{
-          throw new Error("Asignatura no encontrada");
-        }
-        if (est) est.agregarCalificacion(idAsignatura, nota);
-      }else{
-        throw new Error("Estudiante no encontrado");
-      }
+    if (nota < 0 || nota > 10) {
+      throw new Error('La nota debe estar entre 0 y 10');
     }
-     
-    
+    const estudiante = this.#estudiantes.get(idEstudiante);
+    if (!estudiante) {
+      throw new Error(`Estudiante con ID ${idEstudiante} no encontrado`);
+    }
+    if (!this.#asignaturas.has(idAsignatura)) {
+      throw new Error(`Asignatura con ID ${idAsignatura} no encontrada`);
+    }
+    if (!estudiante.matriculas.has(idAsignatura)) {
+      throw new Error(`El estudiante no está matriculado en esta asignatura`);
+    }
+    estudiante.agregarCalificacion(idAsignatura, nota);
   }
+
+  /**
+   * SOBRECARGA: Obtiene promedios
+   * Versión 1: Promedio general de un estudiante
+   * @param {number} idEstudiante - ID del estudiante
+   * @returns {number} Promedio general
+   */
   promedioAsignaturasEstudiante(idEstudiante) {
-    let est = this.estudiantes.get(idEstudiante);
-    if (!est) {
-      throw new Error("Estudiante no encontrado");
-    }else{
-        return est.obtenerPromedioGeneral();;
+    const estudiante = this.#estudiantes.get(idEstudiante);
+    if (!estudiante) {
+      throw new Error(`Estudiante con ID ${idEstudiante} no encontrado`);
     }
+    return estudiante.obtenerPromedioGeneral();
   }
+
+  /**
+   * SOBRECARGA: Obtiene promedios
+   * Versión 2: Promedio en una asignatura específica
+   * @param {number} idEstudiante - ID del estudiante
+   * @param {number} idAsignatura - ID de la asignatura
+   * @returns {number} Promedio en la asignatura
+   */
   promedioAsignaturaEstudiante(idEstudiante, idAsignatura) {
-    let est = this.estudiantes.get(idEstudiante);
-    if (!est) {
-      throw new Error("Estudiante no encontrado");
-    }else{
-        if (!this.asignaturas.has(idAsignatura)) {
-          throw new Error("Asignatura no encontrada");
-        }else{
-          return est.obtenerPromedioPorAsignatura(idAsignatura);
-        }
-    } 
+    const estudiante = this.#estudiantes.get(idEstudiante);
+    if (!estudiante) {
+      throw new Error(`Estudiante con ID ${idEstudiante} no encontrado`);
+    }
+
+    if (!this.#asignaturas.has(idAsignatura)) {
+      throw new Error(`Asignatura con ID ${idAsignatura} no encontrada`);
+    }
+
+    return estudiante.obtenerPromedioPorAsignatura(idAsignatura);
   }
+
+  /**
+   * Genera un informe general de un estudiante o de todos los estudiantes.
+   * 
+   * @param {string|null} idEstudiante - El ID del estudiante. Si es `null`, genera el informe de todos los estudiantes.
+   * @returns {string} El informe general del estudiante o de todos los estudiantes.
+   * @throws {Error} Si el estudiante no existe.
+   */
   informeGeneral(idEstudiante = null) {
     if (idEstudiante) {
       const e = this.estudiantes.get(idEstudiante);
@@ -167,13 +284,18 @@ export class SGAEA {
       return texto;
     } else {
       if (this.estudiantes.size === 0) {
-        throw new Error("No hay estudiantes registrados.");
+        return "No hay estudiantes registrados.";
       }
       return [...this.estudiantes.values()]
         .map(e => this.informeGeneral(e.id))
         .join("\n---------------------------------\n");
     }
   }
+
+  /**
+   * Genera un listado de estudiantes
+   * @returns {string} Listado formateado
+   */
   listadoEstudiantes() {
     if (this.estudiantes.size === 0) {
       throw new Error("No hay estudiantes registrados.");
@@ -188,6 +310,11 @@ export class SGAEA {
       })
       .join("\n---------------------------------\n");
   }
+
+  /**
+   * Genera un listado de asignaturas
+   * @returns {string} Listado formateado
+   */
   listadoAsignaturas() {
     if (this.asignaturas.size === 0) {
       throw new Error("No hay asignaturas registradas.");
@@ -200,6 +327,11 @@ export class SGAEA {
       })
       .join("\n---------------------------------\n");
   }
+
+  /**
+   * Genera un listado de matrículas
+   * @returns {string} Listado formateado
+   */
   listadoMatriculas() {
     if (this.estudiantes.size === 0) {
       throw new Error("No hay estudiantes registrados.");
