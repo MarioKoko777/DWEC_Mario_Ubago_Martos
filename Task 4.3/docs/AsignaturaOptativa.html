@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: Asignatura</title>
+    <title>JSDoc: Class: AsignaturaOptativa</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: Asignatura</h1>
+    <h1 class="page-title">Class: AsignaturaOptativa</h1>
 
     
 
@@ -28,10 +28,10 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>Asignatura<span class="signature">(id, nombre, curso)</span><span class="type-signature"></span></h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>AsignaturaOptativa<span class="signature">(id, nombre, curso, creditos)</span><span class="type-signature"></span></h2>
         
-            <div class="class-description">Clase que representa una asignatura académica.
-Utiliza propiedades privadas para encapsular los datos.</div>
+            <div class="class-description">Clase que representa una asignatura optativa, heredando de Asignatura.
+Añade información sobre créditos además de los atributos base.</div>
         
     
 </header>
@@ -46,7 +46,7 @@ Utiliza propiedades privadas para encapsular los datos.</div>
     
 
     
-    <h4 class="name" id="Asignatura"><span class="type-signature"></span>new Asignatura<span class="signature">(id, nombre, curso)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="AsignaturaOptativa"><span class="type-signature"></span>new AsignaturaOptativa<span class="signature">(id, nombre, curso, creditos)</span><span class="type-signature"></span></h4>
     
 
     
@@ -54,7 +54,7 @@ Utiliza propiedades privadas para encapsular los datos.</div>
 
 
 <div class="description">
-    Crea una instancia de Asignatura.
+    Crea una instancia de AsignaturaOptativa.
 </div>
 
 
@@ -129,7 +129,7 @@ Utiliza propiedades privadas para encapsular los datos.</div>
 
             
 
-            <td class="description last">Nombre de la asignatura (solo letras y espacios).</td>
+            <td class="description last">Nombre de la asignatura.</td>
         </tr>
 
     
@@ -153,6 +153,29 @@ Utiliza propiedades privadas para encapsular los datos.</div>
             
 
             <td class="description last">Curso al que pertenece la asignatura.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>creditos</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Número de créditos de la asignatura (debe ser positivo).</td>
         </tr>
 
     
@@ -193,7 +216,7 @@ Utiliza propiedades privadas para encapsular los datos.</div>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Asignatura.js.html">Asignatura.js</a>, <a href="Asignatura.js.html#line6">line 6</a>
+        <a href="Asignatura.js.html">Asignatura.js</a>, <a href="Asignatura.js.html#line67">line 67</a>
     </li></ul></dd>
     
 
@@ -234,7 +257,7 @@ Utiliza propiedades privadas para encapsular los datos.</div>
         <h3 class="subsection-title">Classes</h3>
 
         <dl>
-            <dt><a href="Asignatura.html">Asignatura</a></dt>
+            <dt><a href="AsignaturaOptativa.html">AsignaturaOptativa</a></dt>
             <dd></dd>
         </dl>
     
@@ -250,7 +273,7 @@ Utiliza propiedades privadas para encapsular los datos.</div>
 
         
             
-<h4 class="name" id="curso"><span class="type-signature"></span>curso<span class="type-signature"></span></h4>
+<h4 class="name" id="creditos"><span class="type-signature"></span>creditos<span class="type-signature"></span></h4>
 
 
 
@@ -290,7 +313,7 @@ Utiliza propiedades privadas para encapsular los datos.</div>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Asignatura.js.html">Asignatura.js</a>, <a href="Asignatura.js.html#line38">line 38</a>
+        <a href="Asignatura.js.html">Asignatura.js</a>, <a href="Asignatura.js.html#line87">line 87</a>
     </li></ul></dd>
     
 
@@ -308,129 +331,13 @@ Utiliza propiedades privadas para encapsular los datos.</div>
 
         
             
-<h4 class="name" id="id"><span class="type-signature"></span>id<span class="type-signature"></span></h4>
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Asignatura.js.html">Asignatura.js</a>, <a href="Asignatura.js.html#line28">line 28</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="nombre"><span class="type-signature"></span>nombre<span class="type-signature"></span></h4>
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Asignatura.js.html">Asignatura.js</a>, <a href="Asignatura.js.html#line33">line 33</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="nombre"><span class="type-signature"></span>nombre<span class="type-signature"></span></h4>
+<h4 class="name" id="creditos"><span class="type-signature"></span>creditos<span class="type-signature"></span></h4>
 
 
 
 
 <div class="description">
-    Establece un nuevo nombre para la asignatura.
+    Establece un nuevo valor para los créditos de la asignatura.
 </div>
 
 
@@ -468,7 +375,7 @@ Utiliza propiedades privadas para encapsular los datos.</div>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Asignatura.js.html">Asignatura.js</a>, <a href="Asignatura.js.html#line46">line 46</a>
+        <a href="Asignatura.js.html">Asignatura.js</a>, <a href="Asignatura.js.html#line95">line 95</a>
     </li></ul></dd>
     
 
@@ -504,7 +411,8 @@ Utiliza propiedades privadas para encapsular los datos.</div>
 
 
 <div class="description">
-    Devuelve una representación en cadena de la asignatura.
+    Devuelve una representación en cadena de la asignatura optativa.
+Sobrescribe el método toString() de la clase padre.
 </div>
 
 
@@ -548,7 +456,7 @@ Utiliza propiedades privadas para encapsular los datos.</div>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Asignatura.js.html">Asignatura.js</a>, <a href="Asignatura.js.html#line57">line 57</a>
+        <a href="Asignatura.js.html">Asignatura.js</a>, <a href="Asignatura.js.html#line107">line 107</a>
     </li></ul></dd>
     
 
@@ -577,7 +485,7 @@ Utiliza propiedades privadas para encapsular los datos.</div>
 
         
 <div class="param-desc">
-    Cadena que representa la asignatura en formato "Nombre (Curso)".
+    Cadena que representa la asignatura en formato "Nombre (Curso) - X créditos".
 </div>
 
 
