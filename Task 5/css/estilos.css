@@ -1,0 +1,186 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Fuente y fondo general */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f2f5;
+    color: #2c3e50;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Encabezado */
+header {
+    background-color: #1f2d3d;
+    padding: 20px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    list-style: none;
+    flex-wrap: wrap;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 16px;
+    border-radius: 6px;
+    transition: background 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: #34495e;
+}
+
+/* Contenedor principal */
+main {
+    width: 100%;
+    max-width: 900px;
+    padding: 20px;
+}
+
+/* Formularios */
+#contenedor_formulario {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+    width: 100%;
+}
+
+/* Título */
+#contenedor_formulario h2 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+/* Inputs y fieldsets */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="submit"],
+input[type="checkbox"] {
+    padding: 12px;
+    border: 1px solid #dcdcdc;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+input[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Fieldsets */
+fieldset {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 15px;
+}
+
+legend {
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #34495e;
+}
+
+/* Checkbox */
+#matriculacion-form div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#matriculacion-form label {
+    margin: 0;
+}
+
+/* Mensaje vacío */
+#matriculacion-form p {
+    text-align: center;
+    font-style: italic;
+    color: #999;
+}
+
+/* Tabla de alumnos */
+#contenedor_lista_alumnos {
+    background: #fff;
+    margin-top: 30px;
+    padding: 25px;
+    border-radius: 10px;
+    width: 100%;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+}
+
+#contenedor_lista_alumnos h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 22px;
+}
+
+#tabla_alumnos {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#tabla_alumnos th, #tabla_alumnos td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+#tabla_alumnos th {
+    background-color: #1f2d3d;
+    color: white;
+}
+
+#tabla_alumnos tbody tr:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+#tabla_alumnos tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Botones */
+button {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #c0392b;
+}
