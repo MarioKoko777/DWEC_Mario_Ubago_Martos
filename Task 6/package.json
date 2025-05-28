@@ -1,0 +1,18 @@
+{
+  "name": "api-consumer-website",
+  "version": "1.0.0",
+  "description": "Sitio web que consume API con JavaScript y jQuery",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@material-tailwind/html": "^2.1.9",
+    "autoprefixer": "^10.4.16",
+    "flowbite": "^2.2.1",
+    "postcss": "^8.4.31",
+    "tailwindcss": "^3.3.5",
+    "vite": "^4.4.9"
+  }
+}
