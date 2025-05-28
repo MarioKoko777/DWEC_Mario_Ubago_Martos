@@ -21,7 +21,7 @@ export class Estudiante {
         this.#direccion = { ...direccion };
         this.#registro = [];
         this.#asignaturas = [];
-        this.#calificaciones = {};
+        this.#calificaciones = new Map();
     }
 
     get id() { return this.#id; }
@@ -70,7 +70,7 @@ export class Estudiante {
             if (!this.#calificaciones[asignatura]) {
                 this.#calificaciones[asignatura] = [];
             }
-            this.#calificaciones[asignatura].push(calificacion);
+            this.#calificaciones.get(asignatura).push(calificacion);
         } else {
             throw new Error(`El estudiante no está matriculado en la asignatura ${asignatura}.`);
         }

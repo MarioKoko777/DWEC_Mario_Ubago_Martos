@@ -115,10 +115,11 @@ function actualizarLocalStorage(estudiante) {
 
 function calificarAsignaturas(estudiante) {
     let boton = document.getElementById("calificar");
+    let oldcalificaciones = estudiante.calificaciones || {};
     boton.addEventListener("click", function() {
         let tabla = document.getElementById("tabla_asignaturas");
         let filas = tabla.querySelectorAll("tbody tr");
-        let calificaciones = {};
+        let calificaciones = estudiante.calificaciones || {};
         filas.forEach(fila => {
             let asignatura = fila.querySelector("td").innerText;
             let calificacion = fila.querySelector("input").value;
@@ -126,7 +127,15 @@ function calificarAsignaturas(estudiante) {
                 alert("La calificación debe estar entre 0 y 10");
                 return;
             }else{
-               calificaciones[asignatura] = calificacion; 
+                if (calificaciones instanceof Map) {
+                    calificaciones = Object.fromEntries(estudiante.calificaciones);
+                }
+                if (!Array.isArray(calificaciones[asignatura])) {
+                    calificaciones[asignatura] = estudiante.calificaciones[asignatura] 
+                    ? [estudiante.calificaciones[asignatura]] 
+                    : [];
+                }
+                calificaciones[asignatura].push(Number(calificacion));
             }
         });
         estudiante.calificaciones = calificaciones;
