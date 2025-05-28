@@ -122,7 +122,12 @@ function calificarAsignaturas(estudiante) {
         filas.forEach(fila => {
             let asignatura = fila.querySelector("td").innerText;
             let calificacion = fila.querySelector("input").value;
-            calificaciones[asignatura] = calificacion;
+            if(calificacion < 0 || calificacion > 10) {
+                alert("La calificación debe estar entre 0 y 10");
+                return;
+            }else{
+               calificaciones[asignatura] = calificacion; 
+            }
         });
         estudiante.calificaciones = calificaciones;
         actualizarLocalStorage(estudiante); 

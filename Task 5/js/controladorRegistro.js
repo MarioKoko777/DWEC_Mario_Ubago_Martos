@@ -1,5 +1,5 @@
 import { Estudiante } from "./clases.js";
-// Funciones
+
 async function generarMatriculacion(contenedor, estudiante) {
     contenedor.innerHTML = "";
 
@@ -87,21 +87,21 @@ function FormularioOriginal(contenedor) {
     contenedor.appendChild(h2);
 
     const form = document.createElement("form");
-    form.id = "registro-form";
+    form.setAttribute("id", "registro-form");
 
     const inputNombre = document.createElement("input");
-    inputNombre.type = "text";
-    inputNombre.id = "nombre";
-    inputNombre.required = true;
-    inputNombre.placeholder = "Nombre";
+    inputNombre.setAttribute("type", "text");
+    inputNombre.setAttribute("id", "nombre");
+    inputNombre.setAttribute("required", "true");
+    inputNombre.setAttribute("placeholder", "Nombre");
     form.appendChild(inputNombre);
 
     const inputEdad = document.createElement("input");
-    inputEdad.type = "number";
-    inputEdad.id = "edad";
-    inputEdad.min = 1;
-    inputEdad.required = true;
-    inputEdad.placeholder = "Edad";
+    inputEdad.setAttribute("type", "number");
+    inputEdad.setAttribute("id", "edad");
+    inputEdad.setAttribute("min", "1");
+    inputEdad.setAttribute("required", "true");
+    inputEdad.setAttribute("placeholder", "Edad");
     form.appendChild(inputEdad);
 
     const fieldset = document.createElement("fieldset");
@@ -111,51 +111,50 @@ function FormularioOriginal(contenedor) {
     fieldset.appendChild(legend);
 
     const inputCalle = document.createElement("input");
-    inputCalle.type = "text";
-    inputCalle.id = "calle";
-    inputCalle.required = true;
-    inputCalle.placeholder = "Calle";
+    inputCalle.setAttribute("type", "text");
+    inputCalle.setAttribute("id", "calle");
+    inputCalle.setAttribute("required", "true");
+    inputCalle.setAttribute("placeholder", "Calle");
     fieldset.appendChild(inputCalle);
 
     const inputPiso = document.createElement("input");
-    inputPiso.type = "text";
-    inputPiso.id = "piso";
-    inputPiso.placeholder = "Piso";
+    inputPiso.setAttribute("type", "text");
+    inputPiso.setAttribute("id", "piso");
+    inputPiso.setAttribute("placeholder", "Piso");
     fieldset.appendChild(inputPiso);
 
     fieldset.appendChild(document.createElement("br"));
     fieldset.appendChild(document.createElement("br"));
 
     const inputCP = document.createElement("input");
-    inputCP.type = "number";
-    inputCP.id = "cp";
-    inputCP.required = true;
-    inputCP.placeholder = "Codigo Postal";
+    inputCP.setAttribute("type", "number");
+    inputCP.setAttribute("id", "cp");
+    inputCP.setAttribute("required", "true");
+    inputCP.setAttribute("placeholder", "Codigo Postal");
     fieldset.appendChild(inputCP);
 
     const inputCiudad = document.createElement("input");
-    inputCiudad.type = "text";
-    inputCiudad.id = "ciudad";
-    inputCiudad.required = true;
-    inputCiudad.placeholder = "Ciudad";
+    inputCiudad.setAttribute("type", "text");
+    inputCiudad.setAttribute("id", "ciudad");
+    inputCiudad.setAttribute("required", "true");
+    inputCiudad.setAttribute("placeholder", "Ciudad");
     fieldset.appendChild(inputCiudad);
 
     const inputLocalidad = document.createElement("input");
-    inputLocalidad.type = "text";
-    inputLocalidad.id = "localidad";
-    inputLocalidad.required = true;
-    inputLocalidad.placeholder = "localidad";
+    inputLocalidad.setAttribute("type", "text");
+    inputLocalidad.setAttribute("id", "localidad");
+    inputLocalidad.setAttribute("required", "true");
+    inputLocalidad.setAttribute("placeholder", "localidad");
     fieldset.appendChild(inputLocalidad);
 
     form.appendChild(fieldset);
 
     const inputSubmit = document.createElement("input");
-    inputSubmit.type = "submit";
-    inputSubmit.value = "Registrar";
+    inputSubmit.setAttribute("type", "submit");
+    inputSubmit.setAttribute("value", "Registrar");
     form.appendChild(inputSubmit);
 
     contenedor.appendChild(form);
-
     logicaBase();
 }
 
@@ -187,7 +186,6 @@ function logicaBase() {
 
 function seederAsignaturas() {
     
-
     let asignaturasTroncales = [
         { nombre: "Matematicas" },
         { nombre: "Lengua" },
@@ -203,7 +201,6 @@ function seederAsignaturas() {
         { nombre: "Plastica" },
         { nombre: "Religion" }
     ];
-
     localStorage.setItem("AsignaturasTroncales", JSON.stringify(asignaturasTroncales));
 }
 let estudiantesMatriculados = new Array();
