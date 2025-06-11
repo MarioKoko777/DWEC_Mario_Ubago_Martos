@@ -35,9 +35,8 @@ api-consumer-website/
 │   ├── css/
 │   │   └── input.css         # Entrada de Tailwind
 │   ├── js/
-│   │   ├── app.js            # Versión en JS puro
-│   │   └── app-jquery.js     # Versión con jQuery
-├── dist/                     # Carpeta generada tras build
+│   │   ├── scrip.js          # Versión en JS puro
+│   │   └── jquery.js         # Versión con jQuery
 ├── tailwind.config.js
 ├── postcss.config.js
 ├── package.json
@@ -50,7 +49,7 @@ api-consumer-website/
 
 1. Clona el repositorio:
    ```bash
-   git clone https://github.com/tu-usuario/api-consumer-website.git
+   git clone https://github.com/MarioKoko777/DWEC_Mario_Ubago_Martos.git
    cd api-consumer-website
    ```
 
@@ -92,15 +91,6 @@ api-consumer-website/
 - El directorio `node_modules/` está correctamente excluido mediante `.gitignore`.
 - No se incluyen archivos innecesarios ni carpetas temporales (`dist/`, `build/`, etc.) en el repositorio.
 
----
-
-## 📄 Licencia
-
-Este proyecto es de uso educativo y no tiene fines comerciales. Puedes modificarlo o adaptarlo según tus necesidades.
-
----
-
-### ✅ Cumple con los requisitos de:
 
 - Flujo de trabajo con Node y Tailwind
 - Diseño responsive sin componentes propios
