@@ -52,6 +52,7 @@ function displayMovies(movies) {
 async function loadInitialMovies() {
   const movies = await fetchMovies(currentPage);
   displayMovies(movies);
+  currentPage++;
 }
 
 // Scroll infinito

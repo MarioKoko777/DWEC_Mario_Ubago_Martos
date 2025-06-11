@@ -21,7 +21,7 @@ Este proyecto muestra cómo consumir una API (The Movie Database) utilizando tan
 
 1. Clona el repositorio:
    ```bash
-   git clone https://github.com/MarioKoko777/DWEC_Mario_Ubago_Martos.git
+   git clone https://github.com/tu-usuario/api-consumer-website.git
 2. Instala las dependencias
    ```bash
    npm install

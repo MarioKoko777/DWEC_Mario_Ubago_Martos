@@ -4,72 +4,46 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>API Consumer - JavaScript</title>
-  <link href="css/styles.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/output.css">
 </head>
 <body>
-  <nav>
-    <div>
-      <a href="#">
-        <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Logo" />
-        <span>Mario Ubago Martos</span>
+  <nav class="bg-white shadow border-b">
+    <div class="max-w-screen-xl mx-auto px-4 py-4 flex justify-between items-center">
+      <a href="#" class="flex items-center space-x-2">
+        <img src="https://flowbite.com/docs/images/logo.svg" alt="Logo" class="h-8" />
+        <span class="font-semibold text-lg">Mario Ubago Martos</span>
       </a>
-      <div>
-        <ul>
-          <li>
-            <a href="index.html" class="active">JavaScript</a>
-          </li>
-          <li>
-            <a href="jquery.html">jQuery</a>
-          </li>
-          <li>
-            <a href="#">Servicios</a>
-          </li>
-          <li>
-            <a href="#">Contacto</a>
-          </li>
-        </ul>
-      </div>
+      <ul class="flex space-x-6 text-sm font-medium">
+        <li><a href="index.html" class="text-blue-600 font-semibold">JavaScript</a></li>
+        <li><a href="jquery.html" class="text-gray-700 hover:text-blue-600">jQuery</a></li>
+        <li><a href="#" class="text-gray-700 hover:text-blue-600">Servicios</a></li>
+        <li><a href="#" class="text-gray-700 hover:text-blue-600">Contacto</a></li>
+      </ul>
     </div>
   </nav>
-  <main>
-    <div id="movies-container"></div>
-    <div id="loading" class="hidden">
-        <span>Loading...</span>
+  <main class="max-w-screen-lg mx-auto px-4 py-8">
+    <div id="movies-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"></div>
+    <div id="loading" class="hidden text-center mt-4">
+      <span class="text-blue-500 font-semibold">Loading...</span>
     </div>
   </main>
-  <footer>
-    <div>
+  <footer class="bg-gray-100 mt-16">
+    <div class="max-w-screen-xl mx-auto px-4 py-10 grid grid-cols-1 md:grid-cols-4 gap-8 text-sm text-gray-700">
       <div>
-        <div>
-          <h3>API Consumer</h3>
-          <p>Consumiendo APIs con JavaScript y jQuery.</p>
-        </div>
-        <div>
-          <h4>Enlaces</h4>
-          <ul>
-            <li><a href="#">Inicio</a></li>
-            <li><a href="#">Acerca de</a></li>
-            <li><a href="#">Servicios</a></li>
-            <li><a href="#">Contacto</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4>Legal</h4>
-          <ul>
-            <li><a href="#">Política de Privacidad</a></li>
-            <li><a href="#">Términos de Servicio</a></li>
-            <li><a href="#">Cookies</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4>Contacto</h4>
-          <p>info@apiconsumer.com</p>
-          <p>+34 123 456 789</p>
-        </div>
+        <h3 class="text-lg font-semibold mb-2">API Consumer</h3>
+        <p>Consumiendo APIs con JavaScript y jQuery.</p>
       </div>
       <div>
-        <p>&copy; 2023 API Consumer. Todos los derechos reservados.</p>
+        <h4 class="font-semibold mb-2">Enlaces</h4>
+        <ul class="space-y-1">
+          <li><a href="#" class="hover:underline">Inicio</a></li>
+          ...
+        </ul>
       </div>
+      ...
+    </div>
+    <div class="text-center text-gray-500 text-xs py-4 border-t">
+      &copy; 2023 API Consumer. Todos los derechos reservados.
     </div>
   </footer>
   <script src="./js/script.js"></script>
